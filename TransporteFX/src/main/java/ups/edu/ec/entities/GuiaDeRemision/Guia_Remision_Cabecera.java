@@ -88,7 +88,6 @@ public class Guia_Remision_Cabecera extends TraAuditoria implements Serializable
     @JoinColumn(name="TPE_GRC_FK")    
     private TraPersona tpe_grc_fk;
     
-
     public Long getGrc_id_pk() {
         return grc_id_pk;
     }
