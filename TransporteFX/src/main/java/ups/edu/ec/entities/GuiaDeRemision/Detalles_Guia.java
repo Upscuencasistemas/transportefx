@@ -27,7 +27,7 @@ import ups.edu.ec.entities.Abstract.TraAuditoria;
 public class Detalles_Guia extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_HOJA_RUTA_CABECERA_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_DETALLES_GUIA_SEQ")
     @Column(name="DGU_ID_PK", nullable = false,unique = true)
     private Long dgu_id_pk;
 

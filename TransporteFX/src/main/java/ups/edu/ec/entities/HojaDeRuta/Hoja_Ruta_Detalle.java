@@ -32,28 +32,28 @@ public class Hoja_Ruta_Detalle extends TraAuditoria implements Serializable {
     @Column(name="HRD_ID_PK",nullable = false,unique = true)
     private Long hrd_id_pk;
     
-    @Column(name="HRD_NUMERO_FACTURA")
+    @Column(name="HRD_NUMERO_FACTURA", length = 200)
     private Long hrd_numeroFactura;
 
-    @Column(name="HRD_CONTENIDO")    
+    @Column(name="HRD_CONTENIDO", length = 200)    
     private String hrd_contenido;
 
-    @Column(name="HRD_REMITENTE")
+    @Column(name="HRD_REMITENTE", length = 200)
     private String hrd_remitente;
 
-    @Column(name="HRD_DESTINATARIO")
+    @Column(name="HRD_DESTINATARIO", length = 200)
     private String hrd_destinatario;
 
-    @Column(name="HRD_DESTINO")    
+    @Column(name="HRD_DESTINO", length = 200)    
     private String hrd_destino;
 
-    @Column(name="HRD_FLETE_CANCELADO")    
+    @Column(name="HRD_FLETE_CANCELADO", length = 200)    
     private String hrd_fletePagado;
 
-    @Column(name="HRD_COBRO_RUTA")    
+    @Column(name="HRD_COBRO_RUTA", length = 200)    
     private String hrd_cobroRuta;
 
-    @Column(name="HRD_COBRO_CUENCA")    
+    @Column(name="HRD_COBRO_CUENCA", length = 200)    
     private String hrd_cobroCuenca;
 
     @ManyToOne

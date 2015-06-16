@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,6 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import ups.edu.ec.entities.Abstract.TraAuditoria;
+import ups.edu.ec.entities.RRHH.TraPersona;
 
 /**
  *
@@ -41,28 +43,38 @@ public class Hoja_Ruta_Cabecera extends TraAuditoria implements Serializable {
     @Column(name="HRC_FECHA")
     private Date hrc_fecha;
 
-    @Column(name="HRC_PROPIETARIO")    
+    @Column(name="HRC_PROPIETARIO", length = 100)    
     private String hrc_propietario;
 
-    @Column(name="HRC_RUTA")    
+    @Column(name="HRC_RUTA", length = 200)    
     private String hrc_ruta;
 
-    @Column(name="HRC_COBRO_RUTA")        
+    @Column(name="HRC_COBRO_RUTA", precision = 10, scale = 2)        
     private double hrc_cobroRuta;
 
-    @Column(name="HRC_COBRO_CUENCA")    
+    @Column(name="HRC_COBRO_CUENCA", precision = 10, scale = 2)    
     private double hrc_cobroCuenca;
     
-    @Column(name="HRC_FLETE_PAGADO")        
+    @Column(name="HRC_FLETE_PAGADO", precision = 10, scale = 2)        
     private double hrc_fletePagado;
     
-    @Column(name="HRC_TOTAL_PAGAR")        
+    @Column(name="HRC_TOTAL_PAGAR", precision = 10, scale = 2)        
     private double hrc_totalPagar;
 
-    @Column(name="HRC_PORCENTAJE")    
+    @Column(name="HRC_PORCENTAJE", precision = 3, scale = 1)    
     private double hrc_porcentaje;
     
-    //FALTA FOREING KEY DE PERSONAS
+    @ManyToOne
+    @JoinColumn(name="PER_HRC_FK")    
+    private TraPersona per_hrc_fk;    
+
+    public TraPersona getPer_hrc_fk() {
+        return per_hrc_fk;
+    }
+
+    public void setPer_hrc_fk(TraPersona per_hrc_fk) {
+        this.per_hrc_fk = per_hrc_fk;
+    }
 
     public Long getHrc_id_pk() {
         return hrc_id_pk;

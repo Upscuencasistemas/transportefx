@@ -35,8 +35,9 @@ public class Lugares extends TraAuditoria implements Serializable {
     @Column(name="LUG_DESCRIPCION",length = 100)
     private String lug_descripcion;
 
-    @Column(name="LUG_PADRE_ID")
-    private Long lug_padre_id;
+    @ManyToOne
+    @JoinColumn(name="LUG_PADRE_ID")
+    private Lugares lug_padre_id;
     
     @ManyToOne
     @JoinColumn(name="HRC_HRD_FK")
@@ -58,11 +59,11 @@ public class Lugares extends TraAuditoria implements Serializable {
         this.lug_descripcion = lug_descripcion;
     }
 
-    public Long getLug_padre_id() {
+    public Lugares getLug_padre_id() {
         return lug_padre_id;
     }
 
-    public void setLug_padre_id(Long lug_padre_id) {
+    public void setLug_padre_id(Lugares lug_padre_id) {
         this.lug_padre_id = lug_padre_id;
     }
 

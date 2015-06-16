@@ -19,6 +19,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import ups.edu.ec.entities.Abstract.TraAuditoria;
+import ups.edu.ec.entities.FACTURACION.TraFacturaIvas;
+import ups.edu.ec.entities.RRHH.TraPersona;
 
 /**
  *
@@ -51,10 +53,10 @@ public class Guia_Remision_Cabecera extends TraAuditoria implements Serializable
     private String grc_fechaEmision;
 
     @Column(name="GRC_SUBTOTAL", precision = 10, scale = 2)    
-    private String grc_subtotal;
+    private double grc_subtotal;
 
     @Column(name="GRC_TOTAL_CON_IVA", precision = 10, scale = 2)
-    private String grc_totalConIva;
+    private double grc_totalConIva;
 
     @Column(name="GRC_USUARIO",length = 100)    
     private String grc_usuario;
@@ -77,9 +79,15 @@ public class Guia_Remision_Cabecera extends TraAuditoria implements Serializable
     @ManyToOne
     @JoinColumn(name="MTR_GRC_FK")    
     private Motivo_Traslados mtr_grc_fk;
+
+    @ManyToOne
+    @JoinColumn(name="TFI_GRC_FK")    
+    private TraFacturaIvas tfi_grc_fk;
+
+    @ManyToOne
+    @JoinColumn(name="TPE_GRC_FK")    
+    private TraPersona tpe_grc_fk;
     
-    
-    //FALTA IVAS Y PERSONAS.
 
     public Long getGrc_id_pk() {
         return grc_id_pk;
@@ -129,19 +137,19 @@ public class Guia_Remision_Cabecera extends TraAuditoria implements Serializable
         this.grc_fechaEmision = grc_fechaEmision;
     }
 
-    public String getGrc_subtotal() {
+    public double getGrc_subtotal() {
         return grc_subtotal;
     }
 
-    public void setGrc_subtotal(String grc_subtotal) {
+    public void setGrc_subtotal(double grc_subtotal) {
         this.grc_subtotal = grc_subtotal;
     }
 
-    public String getGrc_totalConIva() {
+    public double getGrc_totalConIva() {
         return grc_totalConIva;
     }
 
-    public void setGrc_totalConIva(String grc_totalConIva) {
+    public void setGrc_totalConIva(double grc_totalConIva) {
         this.grc_totalConIva = grc_totalConIva;
     }
 
@@ -192,9 +200,23 @@ public class Guia_Remision_Cabecera extends TraAuditoria implements Serializable
     public void setMtr_grc_fk(Motivo_Traslados mtr_grc_fk) {
         this.mtr_grc_fk = mtr_grc_fk;
     }
-    
-    
-    
+
+    public TraFacturaIvas getTfi_grc_fk() {
+        return tfi_grc_fk;
+    }
+
+    public void setTfi_grc_fk(TraFacturaIvas tfi_grc_fk) {
+        this.tfi_grc_fk = tfi_grc_fk;
+    }
+
+    public TraPersona getTpe_grc_fk() {
+        return tpe_grc_fk;
+    }
+
+    public void setTpe_grc_fk(TraPersona tpe_grc_fk) {
+        this.tpe_grc_fk = tpe_grc_fk;
+    }
+       
     @Override
     public int hashCode() {
         int hash = 0;
