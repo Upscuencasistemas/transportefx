@@ -29,12 +29,12 @@ import ups.edu.ec.entities.GuiaDeRemision.Lugares;
  */
 @Entity
 @Table(name = "TRA_LIQUIDACION_CABECERA")
-@SequenceGenerator(name = "TRA_LCA_SEQ",sequenceName = "TRA_LCA_SEQ",initialValue = 1,allocationSize = 1)
+@SequenceGenerator(name = "TRA_LIQUIDACION_CABECERA_SEQ",sequenceName = "TRA_LIQUIDACION_CABECERA_SEQ",initialValue = 1,allocationSize = 1)
 
 public class LiquidacionCabecera extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_LCA_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_LIQUIDACION_CABECERA_SEQ")
     @Column(name = "LCA_ID_PK",nullable = false,unique = true)
     private Long lcaId;
     

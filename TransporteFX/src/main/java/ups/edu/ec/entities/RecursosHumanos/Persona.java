@@ -36,11 +36,11 @@ import ups.edu.ec.entities.HojaDeRuta.Hoja_Ruta_Cabecera;
 @Entity
 @Table(name = "TRA_PERSONA",uniqueConstraints = {
 @UniqueConstraint(columnNames = "PER_CEDULA")})
-@SequenceGenerator(name = "TRA_PER_SEQ",sequenceName = "TRA_PER_SEQ",initialValue = 1,allocationSize = 1)
+@SequenceGenerator(name = "TRA_PERSONA_SEQ",sequenceName = "TRA_PERSONA_SEQ",initialValue = 1,allocationSize = 1)
 public class Persona extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_PER_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_PERSONA_SEQ")
     @Column(name = "PER_ID_PK",nullable = false,unique = true)
     private Long perId;
     

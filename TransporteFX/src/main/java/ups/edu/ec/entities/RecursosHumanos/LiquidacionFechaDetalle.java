@@ -26,12 +26,12 @@ import ups.edu.ec.entities.Abstract.TraAuditoria;
  */
 @Entity
 @Table(name = "TRA_LIQUIDACION_FECHA_DETALLE")
-@SequenceGenerator(name = "TRA_LFD_SEQ",sequenceName = "TRA_LFD_SEQ",initialValue = 1,allocationSize = 1)
+@SequenceGenerator(name = "TRA_LIQUIDACION_FECHA_DETALLE_SEQ",sequenceName = "TRA_LIQUIDACION_FECHA_DETALLE_SEQ",initialValue = 1,allocationSize = 1)
 
 public class LiquidacionFechaDetalle extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "TRA_LFD_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "TRA_LIQUIDACION_FECHA_DETALLE_SEQ")
     @Column(name = "LFCD_ID_PK",insertable = false,unique = true)
     private Long lfdId;
     

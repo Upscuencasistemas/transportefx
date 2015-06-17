@@ -24,12 +24,12 @@ import ups.edu.ec.entities.Facturacion.Ivas;
  */
 @Entity
 @Table(name = "TRA_LIQUIDACION_DETALLE")
-@SequenceGenerator(name = "TRAN_LDE_SEQ",sequenceName = "TRA_LDE_SEQ",initialValue = 1,allocationSize = 1)
+@SequenceGenerator(name = "TRA_LIQUIDACION_DETALLE_SEQ",sequenceName = "TRA_LIQUIDACION_DETALLE_SEQ",initialValue = 1,allocationSize = 1)
 
 public class LiquidacionDetalle extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_LDE_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_LIQUIDACION_DETALLE_SEQ")
     @Column(name = "LDE_ID_PK",nullable = false,unique = true)
     private Long ldeId;
     

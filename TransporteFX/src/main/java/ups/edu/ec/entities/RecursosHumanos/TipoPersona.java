@@ -24,12 +24,12 @@ import ups.edu.ec.entities.Abstract.TraAuditoria;
  */
 @Entity
 @Table(name = "TRA_TIPO_PERSONA")
-@SequenceGenerator(name = "TRA_TPE_SEQ",sequenceName = "TRA_TPE_SEQ",initialValue = 1,allocationSize = 1)
+@SequenceGenerator(name = "TRA_TIPO_PERSONA_SEQ",sequenceName = "TRA_TIPO_PERSONA_SEQ",initialValue = 1,allocationSize = 1)
 
-public class TipoPersona implements Serializable {
+public class TipoPersona extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_TPE_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_TIPO_PERSONA_SEQ")
     @Column(name = "TPE_ID_PK",nullable = false,unique = true)
     private Long tpeId;
     

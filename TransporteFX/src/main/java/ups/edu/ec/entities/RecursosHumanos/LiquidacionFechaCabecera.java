@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package ups.edu.ec.entities.RecursosHumanos;
@@ -26,12 +27,12 @@ import ups.edu.ec.entities.Abstract.TraAuditoria;
  */
 @Entity
 @Table(name = "TRA_LIQUIDACION_FECHA_CABECERA")
-@SequenceGenerator(name = "TRA_LFC_SEQ",sequenceName = "TRA_LFC_SEQ",initialValue = 1,allocationSize = 1)       
+@SequenceGenerator(name = "TRA_LIQUIDACION_FECHA_CABECERA_SEQ",sequenceName = "TRA_LIQUIDACION_FECHA_CABECERA_SEQ",initialValue = 1,allocationSize = 1)
 
 public class LiquidacionFechaCabecera extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_LFC_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_LIQUIDACION_FECHA_CABECERA_SEQ")
     @Column(name = "LFC_ID_PK",insertable = false,unique = true)
     private Long lfcId;
     
@@ -45,6 +46,7 @@ public class LiquidacionFechaCabecera extends TraAuditoria implements Serializab
     
     @Column(name = "LFC_PERSONA",length = 300)
     private String lfcPersona;
+    
     @Column(name = "LFC_NUMERO",precision = 10)
     private int lfcNumero;
     
@@ -75,10 +77,10 @@ public class LiquidacionFechaCabecera extends TraAuditoria implements Serializab
     @Column(name = "LFC_LIDUIDACION2",precision = 8, scale = 2)
     private double lfcLiquidacion2;
     
-    @Column(name = "LFC_DESCUENTO1",precision = 8, scale = 2)
+    @Column(name = "LFC_DESCUENTO1",length = 10)
     private String lfcDescuento1;
     
-    @Column(name = "LFC_DESCUENTO2",precision = 8, scale = 2)
+    @Column(name = "LFC_DESCUENTO2",length = 10)
     private String lfcDescuento2;
     
     @Column(name = "LFC_ESTADO",length = 10)
@@ -87,18 +89,14 @@ public class LiquidacionFechaCabecera extends TraAuditoria implements Serializab
     //Relacion liqfechaCabezera_liqfechaDetalle
     @OneToMany(mappedBy = "LFC_LFD_FK", fetch = FetchType.LAZY)
     public List<LiquidacionFechaDetalle> liqfecDetlist;
-
     
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (lfcId != null ? lfcId.hashCode() : 0);
-        return hash;
+    public Long getId() {
+        return lfcId;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public void setId(Long id) {
+        this.lfcId = id;
     }
 
     public Long getLfcId() {
@@ -246,8 +244,15 @@ public class LiquidacionFechaCabecera extends TraAuditoria implements Serializab
     }
     
     @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (lfcId != null ? lfcId.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the lfcId fields are not set
         if (!(object instanceof LiquidacionFechaCabecera)) {
             return false;
         }
@@ -260,7 +265,7 @@ public class LiquidacionFechaCabecera extends TraAuditoria implements Serializab
 
     @Override
     public String toString() {
-        return "ups.edu.ec.entities.RRHH.TRAN_LIQUIDACION[ id=" + lfcId + " ]";
+        return "ups.edu.ec.entities.RecursosHumanos.LiquidacionFechaCabecera[ id=" + lfcId + " ]";
     }
     
 }
