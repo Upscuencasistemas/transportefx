@@ -74,10 +74,10 @@ public class IngresosCabecera implements Serializable {
     //ingresodetalles
     @OneToMany(mappedBy= "ingresosCabecera",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
     private List<IngresoDetalles> ingresoDetalleList;
-    //persona
+    //Realacion Ingreso Cabecera_Persona
     @ManyToOne                      
     @JoinColumn(name="PER_ID_PK")  
-    private Persona traPersona; 
+    private Persona PER_ICA_FK; 
      
     public Long getId() {
         return id;
@@ -216,11 +216,11 @@ public class IngresosCabecera implements Serializable {
     }
 
     public Persona getTraPersona() {
-        return traPersona;
+        return PER_ICA_FK;
     }
 
     public void setTraPersona(Persona traPersona) {
-        this.traPersona = traPersona;
+        this.PER_ICA_FK = traPersona;
     }
     
 

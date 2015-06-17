@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import ups.edu.ec.entities.RecursosHumanos.LiquidacionDetalle;
 
 /**
  *
@@ -43,6 +44,10 @@ public class Ivas extends TraAuditoria implements Serializable {
     @OneToMany(mappedBy = "FIV_FCA_FK", fetch = FetchType.LAZY)
     public List<Cabecera> traFacturaCabeceraList;
     
+     //Relacion Ivas_LiquidacionDetalle
+    @OneToMany(mappedBy = "IVA_LDE_FK", fetch = FetchType.LAZY)
+    public List<LiquidacionDetalle>  ivasliqdetlist;
+    
     public List<Cabecera> getTraFacturaCabeceraList() {
         return traFacturaCabeceraList;
     }
@@ -67,6 +72,14 @@ public class Ivas extends TraAuditoria implements Serializable {
         this.traFacturaIvasID = traFacturaIvasID;
     }
 
+    public List<LiquidacionDetalle> getIvasliqdetlist() {
+        return ivasliqdetlist;
+    }
+
+    public void setIvasliqdetlist(List<LiquidacionDetalle> ivasliqdetlist) {
+        this.ivasliqdetlist = ivasliqdetlist;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

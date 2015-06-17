@@ -66,14 +66,15 @@ public class Hoja_Ruta_Cabecera extends TraAuditoria implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="PER_HRC_FK")    
-    private Persona per_hrc_fk;    
+    private Persona PER_HRC_FK;    
+    
 
     public Persona getPer_hrc_fk() {
-        return per_hrc_fk;
+        return PER_HRC_FK;
     }
 
     public void setPer_hrc_fk(Persona per_hrc_fk) {
-        this.per_hrc_fk = per_hrc_fk;
+        this.PER_HRC_FK = per_hrc_fk;
     }
 
     public Long getHrc_id_pk() {

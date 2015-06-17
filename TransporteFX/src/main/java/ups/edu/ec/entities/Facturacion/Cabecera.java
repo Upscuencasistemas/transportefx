@@ -22,6 +22,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import ups.edu.ec.entities.RecursosHumanos.Persona;
 
 /**
  *
@@ -108,6 +109,11 @@ public class Cabecera extends TraAuditoria implements Serializable {
     @ManyToOne
     @JoinColumn(name = "FIV_ID_PK", referencedColumnName = "FIV_ID_PK")
     private Ivas FIV_FCA_FK;
+    
+    //Realacion FacturaCabecera_Persona
+    @JoinColumn(name = "PER_ID_PK",referencedColumnName = "PER_ID_PK")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Persona PER_FCA_FK;
 
     public List<Detalle> getTraFacturaDetalleList() {
         return traFacturaDetalleList;
@@ -269,6 +275,14 @@ public class Cabecera extends TraAuditoria implements Serializable {
         this.traFacturaCabID = traFacturaCabID;
     }
 
+    public Persona getPER_FCA_FK() {
+        return PER_FCA_FK;
+    }
+
+    public void setPER_FCA_FK(Persona PER_FCA_FK) {
+        this.PER_FCA_FK = PER_FCA_FK;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

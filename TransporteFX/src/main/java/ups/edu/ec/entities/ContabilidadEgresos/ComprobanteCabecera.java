@@ -64,10 +64,14 @@ public class ComprobanteCabecera implements Serializable {
     //CompprobanteDetalle
     @OneToMany(mappedBy= "comprobanteCabecera",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
     private List<ComprobanteDetalle> comprobanteDetalleList;
-    //persona 
-    @ManyToOne                      
-    @JoinColumn(name="PER_ID_PK")  
-    private Persona traPersonaBen;
+    //Relacion Egresos/ComprobanteCabecera_Persona BEN
+    @JoinColumn(name = "PER_ID_PK",referencedColumnName = "PER_ID_PK")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Persona PER_CECAB_FK;
+    
+    //Relacion Egresos/ComprobanteCabecera_Persona TRA
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Persona PER_CECAT_FK;
     
     public Long getId() {
         return id;
@@ -165,16 +169,22 @@ public class ComprobanteCabecera implements Serializable {
         this.comprobanteDetalleList = comprobanteDetalleList;
     }
 
-    public Persona getTraPersonaBen() {
-        return traPersonaBen;
+    public Persona getPER_CECAB_FK() {
+        return PER_CECAB_FK;
     }
 
-    public void setTraPersonaBen(Persona traPersonaBen) {
-        this.traPersonaBen = traPersonaBen;
+    public Persona getPER_CECAT_FK() {
+        return PER_CECAT_FK;
     }
 
-            
-    
+    public void setPER_CECAB_FK(Persona PER_CECAB_FK) {
+        this.PER_CECAB_FK = PER_CECAB_FK;
+    }
+
+    public void setPER_CECAT_FK(Persona PER_CECAT_FK) {
+        this.PER_CECAT_FK = PER_CECAT_FK;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

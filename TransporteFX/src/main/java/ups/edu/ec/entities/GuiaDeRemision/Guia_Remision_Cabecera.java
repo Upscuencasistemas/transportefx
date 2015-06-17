@@ -83,10 +83,15 @@ public class Guia_Remision_Cabecera extends TraAuditoria implements Serializable
     @ManyToOne
     @JoinColumn(name="TFI_GRC_FK")    
     private Ivas tfi_grc_fk;
-
+    //Relacion GuiaRemisionCabecera_Persona Destino
     @ManyToOne
-    @JoinColumn(name="TPE_GRC_FK")    
-    private Persona tpe_grc_fk;
+    @JoinColumn(name="PER_GRCD_FK")    
+    private Persona PER_GRCD_FK;
+    //Relacion GuiaRemisionCabecera_Persona Origen
+    @ManyToOne
+    @JoinColumn(name="PER_GRCO_FK")    
+    private Persona PER_GRCO_FK;
+    
     
     public Long getGrc_id_pk() {
         return grc_id_pk;
@@ -209,11 +214,27 @@ public class Guia_Remision_Cabecera extends TraAuditoria implements Serializable
     }
 
     public Persona getTpe_grc_fk() {
-        return tpe_grc_fk;
+        return PER_GRCD_FK;
     }
 
     public void setTpe_grc_fk(Persona tpe_grc_fk) {
-        this.tpe_grc_fk = tpe_grc_fk;
+        this.PER_GRCD_FK = tpe_grc_fk;
+    }
+
+    public Persona getPER_GRCD_FK() {
+        return PER_GRCD_FK;
+    }
+
+    public Persona getPER_GRCO_FK() {
+        return PER_GRCO_FK;
+    }
+
+    public void setPER_GRCD_FK(Persona PER_GRCD_FK) {
+        this.PER_GRCD_FK = PER_GRCD_FK;
+    }
+
+    public void setPER_GRCO_FK(Persona PER_GRCO_FK) {
+        this.PER_GRCO_FK = PER_GRCO_FK;
     }
        
     @Override
