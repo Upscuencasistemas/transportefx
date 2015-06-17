@@ -25,13 +25,13 @@ public class Numero_Facturas implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_NUMERO_FACTURAS_SEQ")
-    @Column(name="TRA_ID_PK")
+    @Column(name="NFA_ID_PK")
     private Long nfaId;
-    @Column(name="TRA_DES", precision=2, scale=4)
+    @Column(name="NFA_DES", precision=2, scale=4)
     private double nfaDes;
-    @Column(name="TRA_HAS", precision=2, scale=4)
+    @Column(name="NFA_HAS", precision=2, scale=4)
     private double nfaHas;
-    @Column(name="TRA_SUMA", precision=2, scale=4)
+    @Column(name="NFA_SUMA", precision=2, scale=4)
     private double nfaSuma;
 
     public Long getNfaId() {

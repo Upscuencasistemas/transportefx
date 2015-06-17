@@ -27,13 +27,13 @@ public class Numero_Ingresos implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_NUMERO_INGRESOS_SEQ")
-    @Column(name="TRA_ID_PK")
+    @Column(name="NIN_ID_PK")
     private Long ninId;
-    @Column(name="TRA_DES", precision=2, scale=4)
+    @Column(name="NIN_DES", precision=2, scale=4)
     private double ninDes;
-    @Column(name="TRA_HAS", precision=2, scale=4)
+    @Column(name="NIN_HAS", precision=2, scale=4)
     private double ninHas;
-    @Column(name="TRA_SUMA", precision=2, scale=4)
+    @Column(name="NIN_SUMA", precision=2, scale=4)
     private double ninSuma;
 
     public Long getNinId() {

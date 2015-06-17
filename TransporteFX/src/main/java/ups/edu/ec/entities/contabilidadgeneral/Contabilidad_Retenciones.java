@@ -27,11 +27,11 @@ public class Contabilidad_Retenciones implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_CONTABILIDAD_RETENCIONES_SEQ")
-    @Column(name="TRA_ID_PK")
+    @Column(name="CRE_ID_PK")
     private Long creId;
-    @Column(name="TRA_VALOR", precision=2, scale=4)
+    @Column(name="CRE_VALOR", precision=2, scale=4)
     private double creValor;
-    @Column(name = "TRA_DESCRIPCION", length=200)
+    @Column(name = "CRE_DESCRIPCION", length=200)
     @Basic(fetch = FetchType.LAZY)
     private String creDescripcion;
 

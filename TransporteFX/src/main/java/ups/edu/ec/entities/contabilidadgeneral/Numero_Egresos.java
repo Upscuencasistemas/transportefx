@@ -25,13 +25,13 @@ public class Numero_Egresos implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_NUMERO_EGRESOS_SEQ")
-    @Column(name="TRA_ID_PK")
+    @Column(name="NEG_ID_PK")
     private Long negId;
-    @Column(name="TRA_DES", precision=2, scale=4)
+    @Column(name="NEG_DES", precision=2, scale=4)
     private double negDes;
-    @Column(name="TRA_HAS", precision=2, scale=4)
+    @Column(name="NEG_HAS", precision=2, scale=4)
     private double negHas;
-    @Column(name="TRA_SUMA", precision=2, scale=4)
+    @Column(name="NEG_SUMA", precision=2, scale=4)
     private double negSuma;
 
     public Long getNegId() {

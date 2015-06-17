@@ -25,13 +25,13 @@ public class Numero_Liquidacion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_NUMERO_LIQUIDACION_SEQ")
-    @Column(name="TRA_ID_PK")
+    @Column(name="NLI_ID_PK")
     private Long nliId;
-    @Column(name="TRA_DES", precision=2, scale=4)
+    @Column(name="NLI_DES", precision=2, scale=4)
     private double nliDes;
-    @Column(name="TRA_HAS", precision=2, scale=4)
+    @Column(name="NLI_HAS", precision=2, scale=4)
     private double nliHas;
-    @Column(name="TRA_SUMA", precision=2, scale=4)
+    @Column(name="NLI_SUMA", precision=2, scale=4)
     private double nliSuma;
 
     public Long getNliId() {

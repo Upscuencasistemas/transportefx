@@ -25,13 +25,13 @@ public class Numero_Guias implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_NUMERO_GUIAS_SEQ")
-    @Column(name="TRA_ID_PK")
+    @Column(name="NGU_ID_PK")
     private Long nguId;
-    @Column(name="TRA_DES", precision=2, scale=4)
+    @Column(name="NGU_DES", precision=2, scale=4)
     private double nguDes;
-    @Column(name="TRA_HAS", precision=2, scale=4)
+    @Column(name="NGU_HAS", precision=2, scale=4)
     private double nguHas;
-    @Column(name="TRA_SUMA", precision=2, scale=4)
+    @Column(name="NGU_SUMA", precision=2, scale=4)
     private double nguSuma;
 
     public Long getNguId() {

@@ -27,11 +27,11 @@ public class Rutas implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_RUTAS_SEQ")
-    @Column(name="TRA_ID_PK")
+    @Column(name="RUT_ID_PK")
     private Long rutId;
-    @Column(name="TRA_TIEMPO", length=50)
+    @Column(name="RUT_TIEMPO", length=50)
     private String creTiempo;
-    @Column(name = "TRA_DESCRIPCION", length=200)
+    @Column(name = "RUT_DESCRIPCION", length=200)
     @Basic(fetch = FetchType.LAZY)
     private String rutDescripcion;
 
