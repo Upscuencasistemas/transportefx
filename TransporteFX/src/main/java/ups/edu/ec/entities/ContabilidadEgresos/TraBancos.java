@@ -6,11 +6,15 @@
 package ups.edu.ec.entities.ContabilidadEgresos;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,7 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TRA_BANCOS")
-@SequenceGenerator(name = "TRA_BANCOS",sequenceName = "TRA_BANCOS_SEQ", initialValue = 1,allocationSize = 1)
+@SequenceGenerator(name = "TRA_BANCOS_SEQ",sequenceName = "TRA_BANCOS_SEQ", initialValue = 1,allocationSize = 1)
 public class TraBancos implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -29,6 +33,12 @@ public class TraBancos implements Serializable {
     private Long id;
     @Column(name = "BAN_NOMBRE", length = 100)
     private String nombre;
+    //ComprobanteCabecera
+    @OneToMany(mappedBy= "traBanco",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
+    private List<TraComprobanteCabecera> comprobanteCabeceraList;
+    //ChequeDetalle
+    @OneToMany(mappedBy= "banco",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
+    private List<TraChequeDetalle> chequeDetalleList;
 
     
     public Long getId() {
@@ -45,6 +55,22 @@ public class TraBancos implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<TraComprobanteCabecera> getComprobanteCabeceraList() {
+        return comprobanteCabeceraList;
+    }
+
+    public void setComprobanteCabeceraList(List<TraComprobanteCabecera> comprobanteCabeceraList) {
+        this.comprobanteCabeceraList = comprobanteCabeceraList;
+    }
+
+    public List<TraChequeDetalle> getChequeDetalleList() {
+        return chequeDetalleList;
+    }
+
+    public void setChequeDetalleList(List<TraChequeDetalle> chequeDetalleList) {
+        this.chequeDetalleList = chequeDetalleList;
     }
 
     

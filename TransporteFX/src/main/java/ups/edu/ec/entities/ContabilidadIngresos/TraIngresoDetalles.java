@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -46,6 +48,10 @@ public class TraIngresoDetalles implements Serializable {
     private double valor;
     @Column(name = "ICA_RECAUDADO")
     private double recaudado;
+    //ingresocabecera
+    @ManyToOne                      
+    @JoinColumn(name="ICA_ID")  
+    private TraIngresosCabecera ingresosCabecera;
 
     
     public Long getId() {
@@ -110,6 +116,14 @@ public class TraIngresoDetalles implements Serializable {
 
     public void setRecaudado(double recaudado) {
         this.recaudado = recaudado;
+    }
+
+    public TraIngresosCabecera getIngresosCabecera() {
+        return ingresosCabecera;
+    }
+
+    public void setIngresosCabecera(TraIngresosCabecera ingresosCabecera) {
+        this.ingresosCabecera = ingresosCabecera;
     }
 
     

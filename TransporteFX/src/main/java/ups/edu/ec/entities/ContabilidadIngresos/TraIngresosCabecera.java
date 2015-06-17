@@ -7,15 +7,23 @@ package ups.edu.ec.entities.ContabilidadIngresos;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import ups.edu.ec.entities.ContabilidadEgresos.TraChequeCabecera;
+import ups.edu.ec.entities.RRHH.TraPersona;
 
 /**
  *
@@ -37,7 +45,7 @@ public class TraIngresosCabecera implements Serializable {
     private Date fecha;
     @Column(name = "ICA_CODIGO", length = 50)
     private String codigoIngreso;
-    @Column(name = "ICA_CODAGE", length = 50)
+    @Column(name = "ICA_CODIGO_AGE", length = 50)
     private String codage;
     @Column(name = "ICA_RETENCION_IVA")
     private double retencionIva;
@@ -60,6 +68,16 @@ public class TraIngresosCabecera implements Serializable {
     private Date fechaIngreso;
     @Column(name = "ICA_ESTADO", length = 100)
     private String estado;
+   //chequecabecera
+    @OneToMany(mappedBy= "ingresoCabecera",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
+    private List<TraChequeCabecera> chequeCabeceraList;
+    //ingresodetalles
+    @OneToMany(mappedBy= "ingresosCabecera",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
+    private List<TraIngresoDetalles> ingresoDetalleList;
+    //persona
+    @ManyToOne                      
+    @JoinColumn(name="PER_ID_PK")  
+    private TraPersona traPersona; 
      
     public Long getId() {
         return id;
@@ -180,6 +198,31 @@ public class TraIngresosCabecera implements Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public List<TraChequeCabecera> getChequeCabeceraList() {
+        return chequeCabeceraList;
+    }
+
+    public void setChequeCabeceraList(List<TraChequeCabecera> chequeCabeceraList) {
+        this.chequeCabeceraList = chequeCabeceraList;
+    }
+
+    public List<TraIngresoDetalles> getIngresoDetalleList() {
+        return ingresoDetalleList;
+    }
+
+    public void setIngresoDetalleList(List<TraIngresoDetalles> ingresoDetalleList) {
+        this.ingresoDetalleList = ingresoDetalleList;
+    }
+
+    public TraPersona getTraPersona() {
+        return traPersona;
+    }
+
+    public void setTraPersona(TraPersona traPersona) {
+        this.traPersona = traPersona;
+    }
+    
 
     
     

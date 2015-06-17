@@ -22,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TRA_COMPROBANTE_EGRESO_DETALLE")
-@SequenceGenerator(name = "TRA_COMPROBANTE_EGRESO_DETALLE",sequenceName = "TRA_COMPROBANTE_EGRESO_DETALLE_SEQ", initialValue = 1,allocationSize = 1)
+@SequenceGenerator(name = "TRA_COMPROBANTE_EGRESO_DETALLE_SEQ",sequenceName = "TRA_COMPROBANTE_EGRESO_DETALLE_SEQ", initialValue = 1,allocationSize = 1)
 public class TraComprobanteDetalle implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,6 +45,10 @@ public class TraComprobanteDetalle implements Serializable {
     private double debe;
     @Column(name = "CED_HABER")
     private double haber;
+    //comprobanteCabecera
+    @ManyToOne                      
+    @JoinColumn(name="CEC_ID")  
+    private TraComprobanteCabecera comprobanteCabecera;
    
     public Long getId() {
         return id;
@@ -117,6 +121,15 @@ public class TraComprobanteDetalle implements Serializable {
     public void setHaber(double haber) {
         this.haber = haber;
     }
+
+    public TraComprobanteCabecera getComprobanteCabecera() {
+        return comprobanteCabecera;
+    }
+
+    public void setComprobanteCabecera(TraComprobanteCabecera comprobanteCabecera) {
+        this.comprobanteCabecera = comprobanteCabecera;
+    }
+    
 
       
     
