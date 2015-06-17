@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ups.edu.ec.entities.FACTURACION;
+package ups.edu.ec.entities.Facturacion;
 
 import ups.edu.ec.entities.Abstract.TraAuditoria;
 import java.io.Serializable;
@@ -28,7 +28,7 @@ import javax.persistence.Table;
 @Table(name = "TRA_FACTURA_IVAS")
 @SequenceGenerator(name = "TRA_FACTURA_IVAS_SEQ", sequenceName = "TRA_FACTURA_IVAS_SEQ", initialValue = 1, allocationSize = 1)
 
-public class TraFacturaIvas extends TraAuditoria implements Serializable {
+public class Ivas extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_FACTURA_IVA_SEQ")
@@ -41,13 +41,13 @@ public class TraFacturaIvas extends TraAuditoria implements Serializable {
     // Relaciones PRIMARY KEY
     // Relacion FacturaIvas_FacturaCabecera
     @OneToMany(mappedBy = "FIV_FCA_FK", fetch = FetchType.LAZY)
-    public List<TraFacturaCabecera> traFacturaCabeceraList;
+    public List<Cabecera> traFacturaCabeceraList;
     
-    public List<TraFacturaCabecera> getTraFacturaCabeceraList() {
+    public List<Cabecera> getTraFacturaCabeceraList() {
         return traFacturaCabeceraList;
     }
 
-    public void setTraFacturaCabeceraList(List<TraFacturaCabecera> traFacturaCabeceraList) {
+    public void setTraFacturaCabeceraList(List<Cabecera> traFacturaCabeceraList) {
         this.traFacturaCabeceraList = traFacturaCabeceraList;
     }
 
@@ -77,10 +77,10 @@ public class TraFacturaIvas extends TraAuditoria implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the traFacturaIvasID fields are not set
-        if (!(object instanceof TraFacturaIvas)) {
+        if (!(object instanceof Ivas)) {
             return false;
         }
-        TraFacturaIvas other = (TraFacturaIvas) object;
+        Ivas other = (Ivas) object;
         if ((this.traFacturaIvasID == null && other.traFacturaIvasID != null) || (this.traFacturaIvasID != null && !this.traFacturaIvasID.equals(other.traFacturaIvasID))) {
             return false;
         }

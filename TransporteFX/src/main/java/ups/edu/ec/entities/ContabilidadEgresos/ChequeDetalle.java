@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TRA_CHEQUE_DETALLE")
 @SequenceGenerator(name = "TRA_CHEQUE_DETALLE_SEQ",sequenceName = "TRA_CHEQUE_DETALLE_SEQ", initialValue = 1,allocationSize = 1)
-public class TraChequeDetalle implements Serializable {
+public class ChequeDetalle implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_CHEQUE_DETALLE_SEQ")
@@ -38,11 +38,11 @@ public class TraChequeDetalle implements Serializable {
     //banco
     @ManyToOne                      
     @JoinColumn(name="BAN_ID")  
-    private TraBancos banco;
+    private Bancos banco;
     //chequecabecera
     @ManyToOne                      
     @JoinColumn(name="CCA_ID")  
-    private TraChequeCabecera chequeCabecera;
+    private ChequeCabecera chequeCabecera;
     
     public Long getId() {
         return id;
@@ -76,19 +76,19 @@ public class TraChequeDetalle implements Serializable {
         this.valor = valor;
     }
 
-    public TraBancos getBanco() {
+    public Bancos getBanco() {
         return banco;
     }
 
-    public void setBanco(TraBancos banco) {
+    public void setBanco(Bancos banco) {
         this.banco = banco;
     }
 
-    public TraChequeCabecera getChequeCabecera() {
+    public ChequeCabecera getChequeCabecera() {
         return chequeCabecera;
     }
 
-    public void setChequeCabecera(TraChequeCabecera chequeCabecera) {
+    public void setChequeCabecera(ChequeCabecera chequeCabecera) {
         this.chequeCabecera = chequeCabecera;
     }
     
@@ -105,10 +105,10 @@ public class TraChequeDetalle implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TraChequeDetalle)) {
+        if (!(object instanceof ChequeDetalle)) {
             return false;
         }
-        TraChequeDetalle other = (TraChequeDetalle) object;
+        ChequeDetalle other = (ChequeDetalle) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

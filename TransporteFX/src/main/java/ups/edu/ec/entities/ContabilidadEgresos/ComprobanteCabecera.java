@@ -22,7 +22,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import ups.edu.ec.entities.RRHH.TraPersona;
+import ups.edu.ec.entities.RecursosHumanos.Persona;
 
 /**
  *
@@ -31,7 +31,7 @@ import ups.edu.ec.entities.RRHH.TraPersona;
 @Entity
 @Table(name = "TRA_COMPROBANTE_EGRESO_CABECERA")
 @SequenceGenerator(name = "TRA_COMPROBANTE_EGRESO_CABECERA_SEQ",sequenceName = "TRA_COMPROBANTE_EGRESO_CABECERA_SEQ", initialValue = 1,allocationSize = 1)
-public class TraComprobanteCabecera implements Serializable {
+public class ComprobanteCabecera implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_COMPROBANTE_EGRESO_CABECERA_SEQ")
@@ -60,14 +60,14 @@ public class TraComprobanteCabecera implements Serializable {
     //Bancos
     @ManyToOne                      
     @JoinColumn(name="BAN_ID")  
-    private TraBancos traBanco;
+    private Bancos traBanco;
     //CompprobanteDetalle
     @OneToMany(mappedBy= "comprobanteCabecera",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
-    private List<TraComprobanteDetalle> comprobanteDetalleList;
+    private List<ComprobanteDetalle> comprobanteDetalleList;
     //persona 
     @ManyToOne                      
     @JoinColumn(name="PER_ID_PK")  
-    private TraPersona traPersonaBen;
+    private Persona traPersonaBen;
     
     public Long getId() {
         return id;
@@ -149,27 +149,27 @@ public class TraComprobanteCabecera implements Serializable {
         this.estado = estado;
     }
 
-    public TraBancos getTraBanco() {
+    public Bancos getTraBanco() {
         return traBanco;
     }
 
-    public void setTraBanco(TraBancos traBanco) {
+    public void setTraBanco(Bancos traBanco) {
         this.traBanco = traBanco;
     }
 
-    public List<TraComprobanteDetalle> getComprobanteDetalleList() {
+    public List<ComprobanteDetalle> getComprobanteDetalleList() {
         return comprobanteDetalleList;
     }
 
-    public void setComprobanteDetalleList(List<TraComprobanteDetalle> comprobanteDetalleList) {
+    public void setComprobanteDetalleList(List<ComprobanteDetalle> comprobanteDetalleList) {
         this.comprobanteDetalleList = comprobanteDetalleList;
     }
 
-    public TraPersona getTraPersonaBen() {
+    public Persona getTraPersonaBen() {
         return traPersonaBen;
     }
 
-    public void setTraPersonaBen(TraPersona traPersonaBen) {
+    public void setTraPersonaBen(Persona traPersonaBen) {
         this.traPersonaBen = traPersonaBen;
     }
 
@@ -185,10 +185,10 @@ public class TraComprobanteCabecera implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TraComprobanteCabecera)) {
+        if (!(object instanceof ComprobanteCabecera)) {
             return false;
         }
-        TraComprobanteCabecera other = (TraComprobanteCabecera) object;
+        ComprobanteCabecera other = (ComprobanteCabecera) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

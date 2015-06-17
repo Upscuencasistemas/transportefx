@@ -27,7 +27,7 @@ import javax.persistence.TemporalType;
 @Table(name = "TRA_INGRESO_DETALLE")
 @SequenceGenerator(name = "TRA_INGRESO_DETALLE_SEQ",sequenceName = "TRA_INGRESO_DETALLE_SEQ", initialValue = 1,allocationSize = 1)
 
-public class TraIngresoDetalles implements Serializable {
+public class IngresoDetalles implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_INGRESO_DETALLE_SEQ")
@@ -51,7 +51,7 @@ public class TraIngresoDetalles implements Serializable {
     //ingresocabecera
     @ManyToOne                      
     @JoinColumn(name="ICA_ID")  
-    private TraIngresosCabecera ingresosCabecera;
+    private IngresosCabecera ingresosCabecera;
 
     
     public Long getId() {
@@ -118,11 +118,11 @@ public class TraIngresoDetalles implements Serializable {
         this.recaudado = recaudado;
     }
 
-    public TraIngresosCabecera getIngresosCabecera() {
+    public IngresosCabecera getIngresosCabecera() {
         return ingresosCabecera;
     }
 
-    public void setIngresosCabecera(TraIngresosCabecera ingresosCabecera) {
+    public void setIngresosCabecera(IngresosCabecera ingresosCabecera) {
         this.ingresosCabecera = ingresosCabecera;
     }
 
@@ -138,10 +138,10 @@ public class TraIngresoDetalles implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TraIngresoDetalles)) {
+        if (!(object instanceof IngresoDetalles)) {
             return false;
         }
-        TraIngresoDetalles other = (TraIngresoDetalles) object;
+        IngresoDetalles other = (IngresoDetalles) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

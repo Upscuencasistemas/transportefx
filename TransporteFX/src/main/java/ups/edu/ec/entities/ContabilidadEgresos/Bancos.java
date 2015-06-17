@@ -25,7 +25,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TRA_BANCOS")
 @SequenceGenerator(name = "TRA_BANCOS_SEQ",sequenceName = "TRA_BANCOS_SEQ", initialValue = 1,allocationSize = 1)
-public class TraBancos implements Serializable {
+public class Bancos implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_BANCOS_SEQ")
@@ -35,10 +35,10 @@ public class TraBancos implements Serializable {
     private String nombre;
     //ComprobanteCabecera
     @OneToMany(mappedBy= "traBanco",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
-    private List<TraComprobanteCabecera> comprobanteCabeceraList;
+    private List<ComprobanteCabecera> comprobanteCabeceraList;
     //ChequeDetalle
     @OneToMany(mappedBy= "banco",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
-    private List<TraChequeDetalle> chequeDetalleList;
+    private List<ChequeDetalle> chequeDetalleList;
 
     
     public Long getId() {
@@ -57,19 +57,19 @@ public class TraBancos implements Serializable {
         this.nombre = nombre;
     }
 
-    public List<TraComprobanteCabecera> getComprobanteCabeceraList() {
+    public List<ComprobanteCabecera> getComprobanteCabeceraList() {
         return comprobanteCabeceraList;
     }
 
-    public void setComprobanteCabeceraList(List<TraComprobanteCabecera> comprobanteCabeceraList) {
+    public void setComprobanteCabeceraList(List<ComprobanteCabecera> comprobanteCabeceraList) {
         this.comprobanteCabeceraList = comprobanteCabeceraList;
     }
 
-    public List<TraChequeDetalle> getChequeDetalleList() {
+    public List<ChequeDetalle> getChequeDetalleList() {
         return chequeDetalleList;
     }
 
-    public void setChequeDetalleList(List<TraChequeDetalle> chequeDetalleList) {
+    public void setChequeDetalleList(List<ChequeDetalle> chequeDetalleList) {
         this.chequeDetalleList = chequeDetalleList;
     }
 
@@ -85,10 +85,10 @@ public class TraBancos implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TraBancos)) {
+        if (!(object instanceof Bancos)) {
             return false;
         }
-        TraBancos other = (TraBancos) object;
+        Bancos other = (Bancos) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

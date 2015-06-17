@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ups.edu.ec.entities.RRHH;
+package ups.edu.ec.entities.RecursosHumanos;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import ups.edu.ec.entities.Abstract.TraAuditoria;
+import ups.edu.ec.entities.Facturacion.Ivas;
 
 /**
  *
@@ -25,7 +26,7 @@ import ups.edu.ec.entities.Abstract.TraAuditoria;
 @Table(name = "TRA_LIQUIDACION_DETALLE")
 @SequenceGenerator(name = "TRAN_LDE_SEQ",sequenceName = "TRA_LDE_SEQ",initialValue = 1,allocationSize = 1)
 
-public class TraLiquidacionDetalle extends TraAuditoria implements Serializable {
+public class LiquidacionDetalle extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_LDE_SEQ")
@@ -41,6 +42,12 @@ public class TraLiquidacionDetalle extends TraAuditoria implements Serializable 
     //Realacion liqDetall_liqCabecera
     @JoinColumn(name = "LCA_ID_PK", referencedColumnName = "LCA_ID_PK")
     @ManyToOne(fetch = FetchType.LAZY)
+    private LiquidacionCabecera LCA_LDE_FK;
+    
+    //Relacion LiquidacionDetalle_Ivas
+    @JoinColumn(name = "FIV_ID_PK", referencedColumnName = "FIV_ID_PK")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Ivas IVA_LDE_FK;
     
     
     
@@ -80,13 +87,29 @@ public class TraLiquidacionDetalle extends TraAuditoria implements Serializable 
         return ldeTotal;
     }
 
+    public LiquidacionCabecera getLCA_LDE_FK() {
+        return LCA_LDE_FK;
+    }
+
+    public Ivas getIVA_LDE_FK() {
+        return IVA_LDE_FK;
+    }
+
+    public void setLCA_LDE_FK(LiquidacionCabecera LCA_LDE_FK) {
+        this.LCA_LDE_FK = LCA_LDE_FK;
+    }
+
+    public void setIVA_LDE_FK(Ivas IVA_LDE_FK) {
+        this.IVA_LDE_FK = IVA_LDE_FK;
+    }
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the ldeId fields are not set
-        if (!(object instanceof TraLiquidacionDetalle)) {
+        if (!(object instanceof LiquidacionDetalle)) {
             return false;
         }
-        TraLiquidacionDetalle other = (TraLiquidacionDetalle) object;
+        LiquidacionDetalle other = (LiquidacionDetalle) object;
         if ((this.ldeId == null && other.ldeId != null) || (this.ldeId != null && !this.ldeId.equals(other.ldeId))) {
             return false;
         }

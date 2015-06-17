@@ -19,7 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import ups.edu.ec.entities.ContabilidadIngresos.TraIngresosCabecera;
+import ups.edu.ec.entities.ContabilidadIngresos.IngresosCabecera;
 
 /**
  *
@@ -28,7 +28,7 @@ import ups.edu.ec.entities.ContabilidadIngresos.TraIngresosCabecera;
 @Entity
 @Table(name = "TRA_CHEQUE_CABECERA")
 @SequenceGenerator(name = "TRA_CHEQUE_CABECERA_SEQ",sequenceName = "TRA_CHEQUE_CABECERA_SEQ", initialValue = 1,allocationSize = 1)
-public class TraChequeCabecera implements Serializable {
+public class ChequeCabecera implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_CHEQUE_CABECERA_SEQ")
@@ -40,11 +40,11 @@ public class TraChequeCabecera implements Serializable {
     private double totalRecaudado;
     //chequedetalle
     @OneToMany(mappedBy= "chequeCabecera",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
-    private List<TraChequeDetalle> chequeDetalleList;
+    private List<ChequeDetalle> chequeDetalleList;
     //ingresocabecera
     @ManyToOne                      
     @JoinColumn(name="ICA_ID")  
-    private TraIngresosCabecera ingresoCabecera;
+    private IngresosCabecera ingresoCabecera;
   
     
     public Long getId() {
@@ -71,19 +71,19 @@ public class TraChequeCabecera implements Serializable {
         this.totalRecaudado = totalRecaudado;
     }
 
-    public List<TraChequeDetalle> getChequeDetalleList() {
+    public List<ChequeDetalle> getChequeDetalleList() {
         return chequeDetalleList;
     }
 
-    public void setChequeDetalleList(List<TraChequeDetalle> chequeDetalleList) {
+    public void setChequeDetalleList(List<ChequeDetalle> chequeDetalleList) {
         this.chequeDetalleList = chequeDetalleList;
     }
 
-    public TraIngresosCabecera getIngresoCabecera() {
+    public IngresosCabecera getIngresoCabecera() {
         return ingresoCabecera;
     }
 
-    public void setIngresoCabecera(TraIngresosCabecera ingresoCabecera) {
+    public void setIngresoCabecera(IngresosCabecera ingresoCabecera) {
         this.ingresoCabecera = ingresoCabecera;
     }
     
@@ -99,10 +99,10 @@ public class TraChequeCabecera implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TraChequeCabecera)) {
+        if (!(object instanceof ChequeCabecera)) {
             return false;
         }
-        TraChequeCabecera other = (TraChequeCabecera) object;
+        ChequeCabecera other = (ChequeCabecera) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

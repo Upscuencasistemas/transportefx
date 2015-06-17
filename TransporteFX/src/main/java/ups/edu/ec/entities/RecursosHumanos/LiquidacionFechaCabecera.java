@@ -2,10 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ups.edu.ec.entities.RRHH;
+package ups.edu.ec.entities.RecursosHumanos;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,7 +28,7 @@ import ups.edu.ec.entities.Abstract.TraAuditoria;
 @Table(name = "TRA_LIQUIDACION_FECHA_CABECERA")
 @SequenceGenerator(name = "TRA_LFC_SEQ",sequenceName = "TRA_LFC_SEQ",initialValue = 1,allocationSize = 1)       
 
-public class TraLiquidacionFechaCabecera extends TraAuditoria implements Serializable {
+public class LiquidacionFechaCabecera extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_LFC_SEQ")
@@ -83,8 +84,9 @@ public class TraLiquidacionFechaCabecera extends TraAuditoria implements Seriali
     @Column(name = "LFC_ESTADO",length = 10)
     private String lfcEstado;
     
-    //Relacion
-    @OneToMany(mappedBy = "LFC_ID_PK", fetch = FetchType.LAZY)
+    //Relacion liqfechaCabezera_liqfechaDetalle
+    @OneToMany(mappedBy = "LFC_LFD_FK", fetch = FetchType.LAZY)
+    public List<LiquidacionFechaDetalle> liqfecDetlist;
 
     
 
@@ -167,13 +169,89 @@ public class TraLiquidacionFechaCabecera extends TraAuditoria implements Seriali
         return lfcEstado;
     }
 
+    public List<LiquidacionFechaDetalle> getLiqfecDetlist() {
+        return liqfecDetlist;
+    }
+
+    public void setLfcId(Long lfcId) {
+        this.lfcId = lfcId;
+    }
+
+    public void setLfcFecha(Date lfcFecha) {
+        this.lfcFecha = lfcFecha;
+    }
+
+    public void setLfcFechaAct(Date lfcFechaAct) {
+        this.lfcFechaAct = lfcFechaAct;
+    }
+
+    public void setLfcPersona(String lfcPersona) {
+        this.lfcPersona = lfcPersona;
+    }
+
+    public void setLfcNumero(int lfcNumero) {
+        this.lfcNumero = lfcNumero;
+    }
+
+    public void setLfcSaldoCob(double lfcSaldoCob) {
+        this.lfcSaldoCob = lfcSaldoCob;
+    }
+
+    public void setLfcSaldoPag(double lfcSaldoPag) {
+        this.lfcSaldoPag = lfcSaldoPag;
+    }
+
+    public void setLfcTotalFlete(double lfcTotalFlete) {
+        this.lfcTotalFlete = lfcTotalFlete;
+    }
+
+    public void setLfcRetencion(double lfcRetencion) {
+        this.lfcRetencion = lfcRetencion;
+    }
+
+    public void setLfcCobroRut(double lfcCobroRut) {
+        this.lfcCobroRut = lfcCobroRut;
+    }
+
+    public void setLfcCobroCuenca(double lfcCobroCuenca) {
+        this.lfcCobroCuenca = lfcCobroCuenca;
+    }
+
+    public void setLfcTotalPag(double lfcTotalPag) {
+        this.lfcTotalPag = lfcTotalPag;
+    }
+
+    public void setLfcLiquidacion1(double lfcLiquidacion1) {
+        this.lfcLiquidacion1 = lfcLiquidacion1;
+    }
+
+    public void setLfcLiquidacion2(double lfcLiquidacion2) {
+        this.lfcLiquidacion2 = lfcLiquidacion2;
+    }
+
+    public void setLfcDescuento1(String lfcDescuento1) {
+        this.lfcDescuento1 = lfcDescuento1;
+    }
+
+    public void setLfcDescuento2(String lfcDescuento2) {
+        this.lfcDescuento2 = lfcDescuento2;
+    }
+
+    public void setLfcEstado(String lfcEstado) {
+        this.lfcEstado = lfcEstado;
+    }
+
+    public void setLiqfecDetlist(List<LiquidacionFechaDetalle> liqfecDetlist) {
+        this.liqfecDetlist = liqfecDetlist;
+    }
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TraLiquidacionFechaCabecera)) {
+        if (!(object instanceof LiquidacionFechaCabecera)) {
             return false;
         }
-        TraLiquidacionFechaCabecera other = (TraLiquidacionFechaCabecera) object;
+        LiquidacionFechaCabecera other = (LiquidacionFechaCabecera) object;
         if ((this.lfcId == null && other.lfcId != null) || (this.lfcId != null && !this.lfcId.equals(other.lfcId))) {
             return false;
         }

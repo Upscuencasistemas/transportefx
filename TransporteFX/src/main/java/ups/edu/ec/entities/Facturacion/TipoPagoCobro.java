@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ups.edu.ec.entities.FACTURACION;
+package ups.edu.ec.entities.Facturacion;
 
 import ups.edu.ec.entities.Abstract.TraAuditoria;
 import java.io.Serializable;
@@ -28,7 +28,7 @@ import javax.persistence.Table;
 @Table(name = "TRA_FACTURA_TIPO_PAGO_COBRO")
 @SequenceGenerator(name = "TRA_FACTURA_TIPO_PAGO_COBRO_SEQ", sequenceName = "TRA_FACTURA_TIPO_PAGO_COBRO_SEQ", initialValue = 1, allocationSize = 1)
 
-public class TraFacturaTipoPagoCobro extends TraAuditoria implements Serializable {
+public class TipoPagoCobro extends TraAuditoria implements Serializable {
     // Atributos mapeados con su respectivo nombre
     // para la creacion de campos de la BD
     private static final long serialVersionUID = 1L;
@@ -43,7 +43,7 @@ public class TraFacturaTipoPagoCobro extends TraAuditoria implements Serializabl
     // Relaciones PRIMARY KEY
     // Relacion FacturaTipoPagoCobro_FacturaCabecera
     @OneToMany(mappedBy = "TPCO_FCA_FK", fetch = FetchType.LAZY)
-    public List<TraFacturaCabecera> traFacturaCabeceraList;
+    public List<Cabecera> traFacturaCabeceraList;
     
     public String getTraFacturaTipPagCoDesc() {
         return traFacturaTipPagCoDesc;
@@ -79,10 +79,10 @@ public class TraFacturaTipoPagoCobro extends TraAuditoria implements Serializabl
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the traFacturaTipPagCoID fields are not set
-        if (!(object instanceof TraFacturaTipoPagoCobro)) {
+        if (!(object instanceof TipoPagoCobro)) {
             return false;
         }
-        TraFacturaTipoPagoCobro other = (TraFacturaTipoPagoCobro) object;
+        TipoPagoCobro other = (TipoPagoCobro) object;
         if ((this.traFacturaTipPagCoID == null && other.traFacturaTipPagCoID != null) || (this.traFacturaTipPagCoID != null && !this.traFacturaTipPagCoID.equals(other.traFacturaTipPagCoID))) {
             return false;
         }

@@ -19,8 +19,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import ups.edu.ec.entities.Abstract.TraAuditoria;
-import ups.edu.ec.entities.FACTURACION.TraFacturaIvas;
-import ups.edu.ec.entities.RRHH.TraPersona;
+import ups.edu.ec.entities.Facturacion.Ivas;
+import ups.edu.ec.entities.RecursosHumanos.Persona;
 
 /**
  *
@@ -82,11 +82,11 @@ public class Guia_Remision_Cabecera extends TraAuditoria implements Serializable
 
     @ManyToOne
     @JoinColumn(name="TFI_GRC_FK")    
-    private TraFacturaIvas tfi_grc_fk;
+    private Ivas tfi_grc_fk;
 
     @ManyToOne
     @JoinColumn(name="TPE_GRC_FK")    
-    private TraPersona tpe_grc_fk;
+    private Persona tpe_grc_fk;
     
     public Long getGrc_id_pk() {
         return grc_id_pk;
@@ -200,19 +200,19 @@ public class Guia_Remision_Cabecera extends TraAuditoria implements Serializable
         this.mtr_grc_fk = mtr_grc_fk;
     }
 
-    public TraFacturaIvas getTfi_grc_fk() {
+    public Ivas getTfi_grc_fk() {
         return tfi_grc_fk;
     }
 
-    public void setTfi_grc_fk(TraFacturaIvas tfi_grc_fk) {
+    public void setTfi_grc_fk(Ivas tfi_grc_fk) {
         this.tfi_grc_fk = tfi_grc_fk;
     }
 
-    public TraPersona getTpe_grc_fk() {
+    public Persona getTpe_grc_fk() {
         return tpe_grc_fk;
     }
 
-    public void setTpe_grc_fk(TraPersona tpe_grc_fk) {
+    public void setTpe_grc_fk(Persona tpe_grc_fk) {
         this.tpe_grc_fk = tpe_grc_fk;
     }
        

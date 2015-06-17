@@ -20,7 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import ups.edu.ec.entities.Abstract.TraAuditoria;
-import ups.edu.ec.entities.RRHH.TraPersona;
+import ups.edu.ec.entities.RecursosHumanos.Persona;
 
 /**
  *
@@ -66,13 +66,13 @@ public class Hoja_Ruta_Cabecera extends TraAuditoria implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="PER_HRC_FK")    
-    private TraPersona per_hrc_fk;    
+    private Persona per_hrc_fk;    
 
-    public TraPersona getPer_hrc_fk() {
+    public Persona getPer_hrc_fk() {
         return per_hrc_fk;
     }
 
-    public void setPer_hrc_fk(TraPersona per_hrc_fk) {
+    public void setPer_hrc_fk(Persona per_hrc_fk) {
         this.per_hrc_fk = per_hrc_fk;
     }
 

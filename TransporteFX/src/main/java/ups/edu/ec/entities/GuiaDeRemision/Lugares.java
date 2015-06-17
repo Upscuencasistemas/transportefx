@@ -6,17 +6,21 @@
 package ups.edu.ec.entities.GuiaDeRemision;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import ups.edu.ec.entities.Abstract.TraAuditoria;
 import ups.edu.ec.entities.HojaDeRuta.Hoja_Ruta_Cabecera;
+import ups.edu.ec.entities.RecursosHumanos.LiquidacionCabecera;
 
 /**
  *
@@ -42,6 +46,11 @@ public class Lugares extends TraAuditoria implements Serializable {
     @ManyToOne
     @JoinColumn(name="HRC_HRD_FK")
     private Tipo_Lugares tlu_lug_fk;
+    
+    
+    //Realacion lugares_liqcabecera
+    @OneToMany(mappedBy = "LUG_LCA_FK",fetch = FetchType.LAZY)
+    private List<LiquidacionCabecera> lugliqcablist;
 
     public Long getLug_id_pk() {
         return lug_id_pk;
@@ -75,6 +84,14 @@ public class Lugares extends TraAuditoria implements Serializable {
         this.tlu_lug_fk = tlu_lug_fk;
     }
 
+    public List<LiquidacionCabecera> getLugliqcablist() {
+        return lugliqcablist;
+    }
+
+    public void setLugliqcablist(List<LiquidacionCabecera> lugliqcablist) {
+        this.lugliqcablist = lugliqcablist;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

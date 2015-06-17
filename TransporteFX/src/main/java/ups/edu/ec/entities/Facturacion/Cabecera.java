@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ups.edu.ec.entities.FACTURACION;
+package ups.edu.ec.entities.Facturacion;
 
 import ups.edu.ec.entities.Abstract.TraAuditoria;
 import java.io.Serializable;
@@ -33,7 +33,7 @@ import javax.persistence.TemporalType;
 @Table(name = "TRA_FACTURA_CABECERA")
 @SequenceGenerator(name = "TRA_FACTURA_CABECERA_SEQ", sequenceName = "TRA_FACTURA_CABECERA_SEQ", initialValue = 1, allocationSize = 1)
 
-public class TraFacturaCabecera extends TraAuditoria implements Serializable {
+public class Cabecera extends TraAuditoria implements Serializable {
     // Atributos mapeados con su respectivo nombre
     // para la creacion de campos de la BD
     private static final long serialVersionUID = 1L;
@@ -92,52 +92,52 @@ public class TraFacturaCabecera extends TraAuditoria implements Serializable {
     // Relaciones PRIMARY KEY
     // Relacion FacturaCabecera_FacturaDetalle
     @OneToMany(mappedBy = "FCA_FDE_FK", fetch = FetchType.LAZY)
-    public List<TraFacturaDetalle> traFacturaDetalleList;
+    public List<Detalle> traFacturaDetalleList;
     
     // Relacion FacturaCabecera_FacturaEstado
     @OneToMany(mappedBy = "FCA_FES_FK", fetch = FetchType.LAZY)
-    public List<TraFacturaEstado> traFacturaEstadoList;
+    public List<Estado> traFacturaEstadoList;
     ///
     // Relaciones FOREIGN KEY
     // Foreign_Key TipoPagoCobro_FacturaCabecera
     @ManyToOne
     @JoinColumn(name = "TPCO_ID_PK", referencedColumnName = "TPCO_ID_PK")
-    private TraFacturaTipoPagoCobro TPCO_FCA_FK;
+    private TipoPagoCobro TPCO_FCA_FK;
     
     // Foreign_key FacturaIvas_FacturaCabecera
     @ManyToOne
     @JoinColumn(name = "FIV_ID_PK", referencedColumnName = "FIV_ID_PK")
-    private TraFacturaIvas FIV_FCA_FK;
+    private Ivas FIV_FCA_FK;
 
-    public List<TraFacturaDetalle> getTraFacturaDetalleList() {
+    public List<Detalle> getTraFacturaDetalleList() {
         return traFacturaDetalleList;
     }
 
-    public void setTraFacturaDetalleList(List<TraFacturaDetalle> traFacturaDetalleList) {
+    public void setTraFacturaDetalleList(List<Detalle> traFacturaDetalleList) {
         this.traFacturaDetalleList = traFacturaDetalleList;
     }
 
-    public List<TraFacturaEstado> getTraFacturaEstadoList() {
+    public List<Estado> getTraFacturaEstadoList() {
         return traFacturaEstadoList;
     }
 
-    public void setTraFacturaEstadoList(List<TraFacturaEstado> traFacturaEstadoList) {
+    public void setTraFacturaEstadoList(List<Estado> traFacturaEstadoList) {
         this.traFacturaEstadoList = traFacturaEstadoList;
     }
 
-    public TraFacturaTipoPagoCobro getTPCO_FCA_FK() {
+    public TipoPagoCobro getTPCO_FCA_FK() {
         return TPCO_FCA_FK;
     }
 
-    public void setTPCO_FCA_FK(TraFacturaTipoPagoCobro TPCO_FCA_FK) {
+    public void setTPCO_FCA_FK(TipoPagoCobro TPCO_FCA_FK) {
         this.TPCO_FCA_FK = TPCO_FCA_FK;
     }
 
-    public TraFacturaIvas getFIV_FCA_FK() {
+    public Ivas getFIV_FCA_FK() {
         return FIV_FCA_FK;
     }
 
-    public void setFIV_FCA_FK(TraFacturaIvas FIV_FCA_FK) {
+    public void setFIV_FCA_FK(Ivas FIV_FCA_FK) {
         this.FIV_FCA_FK = FIV_FCA_FK;
     }
     
@@ -279,10 +279,10 @@ public class TraFacturaCabecera extends TraAuditoria implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the traFacturaCabID fields are not set
-        if (!(object instanceof TraFacturaCabecera)) {
+        if (!(object instanceof Cabecera)) {
             return false;
         }
-        TraFacturaCabecera other = (TraFacturaCabecera) object;
+        Cabecera other = (Cabecera) object;
         if ((this.traFacturaCabID == null && other.traFacturaCabID != null) || (this.traFacturaCabID != null && !this.traFacturaCabID.equals(other.traFacturaCabID))) {
             return false;
         }

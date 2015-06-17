@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import ups.edu.ec.entities.RRHH.TraPersona;
+import ups.edu.ec.entities.RecursosHumanos.Persona;
 
 /**
  *
@@ -47,7 +47,7 @@ public class TraUsuario implements Serializable {
 //RELACION DE UNO A UNO <Usuario a Persona >
     @OneToOne
     @JoinColumn(name="PER_ID_PK")
-    private TraPersona traPersona;
+    private Persona traPersona;
     public long getIdUsuario() {
         return idUsuario;
     }
@@ -80,11 +80,11 @@ public class TraUsuario implements Serializable {
         this.usuarioRolList = usuarioRolList;
     }
     
-    public TraPersona getTraPersona() {
+    public Persona getTraPersona() {
         return traPersona;
     }
 
-    public void setTraPersona(TraPersona traPersona) {
+    public void setTraPersona(Persona traPersona) {
         this.traPersona = traPersona;
     }
     @Override

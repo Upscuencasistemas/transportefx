@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ups.edu.ec.entities.RRHH;
+package ups.edu.ec.entities.RecursosHumanos;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -28,7 +28,7 @@ import ups.edu.ec.entities.Abstract.TraAuditoria;
 @Table(name = "TRA_LIQUIDACION_FECHA_DETALLE")
 @SequenceGenerator(name = "TRA_LFD_SEQ",sequenceName = "TRA_LFD_SEQ",initialValue = 1,allocationSize = 1)
 
-public class TraLiquidacionFechaDetalle extends TraAuditoria implements Serializable {
+public class LiquidacionFechaDetalle extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "TRA_LFD_SEQ")
@@ -75,9 +75,10 @@ public class TraLiquidacionFechaDetalle extends TraAuditoria implements Serializ
     @Column(name = "LFD_DESCUENTO2",length = 5)
     private String lfdDescuento2;
     
-    //Relacion
-    @JoinColumn(name = "LFC_ID_PK", referencedColumnName = "LFC_ID_PK")
+    //Relacion liqFechaDetalle_liqfechaCabezera
+    @JoinColumn(name = "LFC_ID_PK",referencedColumnName = "LFC_ID_PK")
     @ManyToOne(fetch = FetchType.LAZY)
+    private LiquidacionFechaCabecera LFC_LFD_FK;
 
     
     @Override
@@ -203,13 +204,21 @@ public class TraLiquidacionFechaDetalle extends TraAuditoria implements Serializ
         return lfdDescuento2;
     }
 
+    public LiquidacionFechaCabecera getLFC_LFD_FK() {
+        return LFC_LFD_FK;
+    }
+
+    public void setLFC_LFD_FK(LiquidacionFechaCabecera LFC_LFD_FK) {
+        this.LFC_LFD_FK = LFC_LFD_FK;
+    }
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TraLiquidacionFechaDetalle)) {
+        if (!(object instanceof LiquidacionFechaDetalle)) {
             return false;
         }
-        TraLiquidacionFechaDetalle other = (TraLiquidacionFechaDetalle) object;
+        LiquidacionFechaDetalle other = (LiquidacionFechaDetalle) object;
         if ((this.lfdId == null && other.lfdId != null) || (this.lfdId != null && !this.lfdId.equals(other.lfdId))) {
             return false;
         }

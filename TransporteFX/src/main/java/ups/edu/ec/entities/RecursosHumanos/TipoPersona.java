@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ups.edu.ec.entities.RRHH;
+package ups.edu.ec.entities.RecursosHumanos;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +26,7 @@ import ups.edu.ec.entities.Abstract.TraAuditoria;
 @Table(name = "TRA_TIPO_PERSONA")
 @SequenceGenerator(name = "TRA_TPE_SEQ",sequenceName = "TRA_TPE_SEQ",initialValue = 1,allocationSize = 1)
 
-public class TraTipoPersona implements Serializable {
+public class TipoPersona implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_TPE_SEQ")
@@ -35,8 +36,10 @@ public class TraTipoPersona implements Serializable {
     @Column(name = "TPE_DESCRIPCION",length = 500)
     private String tpeDescripcion;
     
-    //Relacion
-    @OneToMany(mappedBy = "TPE_ID_PK", fetch = FetchType.LAZY)
+    //Relacion tipoPersona_Persona
+    @OneToMany(mappedBy = "TPE_PER_FK", fetch = FetchType.LAZY)
+    public List<Persona> personalist;
+    
 
     public Long getId() {
         return tpeId;
@@ -66,6 +69,14 @@ public class TraTipoPersona implements Serializable {
         this.tpeId = id;
     }
 
+    public List<Persona> getPersonalist() {
+        return personalist;
+    }
+
+    public void setPersonalist(List<Persona> personalist) {
+        this.personalist = personalist;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -76,10 +87,10 @@ public class TraTipoPersona implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the tpeId fields are not set
-        if (!(object instanceof TraTipoPersona)) {
+        if (!(object instanceof TipoPersona)) {
             return false;
         }
-        TraTipoPersona other = (TraTipoPersona) object;
+        TipoPersona other = (TipoPersona) object;
         if ((this.tpeId == null && other.tpeId != null) || (this.tpeId != null && !this.tpeId.equals(other.tpeId))) {
             return false;
         }

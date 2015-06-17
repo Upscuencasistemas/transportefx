@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ups.edu.ec.entities.FACTURACION;
+package ups.edu.ec.entities.Facturacion;
 
 import ups.edu.ec.entities.Abstract.TraAuditoria;
 import java.io.Serializable;
@@ -27,7 +27,7 @@ import javax.persistence.Table;
 @Table(name = "TRA_FACTURA_ESTADO")
 @SequenceGenerator(name = "TRA_FACTURA_ESTADO_SEQ", sequenceName = "TRA_FACTURA_ESTADO_SEQ", initialValue = 1, allocationSize = 1)
 
-public class TraFacturaEstado extends TraAuditoria implements Serializable {
+public class Estado extends TraAuditoria implements Serializable {
     // Atributos mapeados con su respectivo nombre
     // para la creacion de campos de la BD
     private static final long serialVersionUID = 1L;
@@ -42,13 +42,13 @@ public class TraFacturaEstado extends TraAuditoria implements Serializable {
     // Foreign_Key FacturaCabecera_FacturaEstado
     @ManyToOne
     @JoinColumn(name = "FCA_ID_PK", referencedColumnName = "FCA_ID_PK")
-    private TraFacturaCabecera FCA_FES_FK;
+    private Cabecera FCA_FES_FK;
 
-    public TraFacturaCabecera getFCA_FES_FK() {
+    public Cabecera getFCA_FES_FK() {
         return FCA_FES_FK;
     }
 
-    public void setFCA_FES_FK(TraFacturaCabecera FCA_FES_FK) {
+    public void setFCA_FES_FK(Cabecera FCA_FES_FK) {
         this.FCA_FES_FK = FCA_FES_FK;
     }
     
@@ -78,10 +78,10 @@ public class TraFacturaEstado extends TraAuditoria implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the traFacturaEstID fields are not set
-        if (!(object instanceof TraFacturaEstado)) {
+        if (!(object instanceof Estado)) {
             return false;
         }
-        TraFacturaEstado other = (TraFacturaEstado) object;
+        Estado other = (Estado) object;
         if ((this.traFacturaEstID == null && other.traFacturaEstID != null) || (this.traFacturaEstID != null && !this.traFacturaEstID.equals(other.traFacturaEstID))) {
             return false;
         }

@@ -2,10 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ups.edu.ec.entities.RRHH;
+package ups.edu.ec.entities.RecursosHumanos;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,6 +21,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import ups.edu.ec.entities.Abstract.TraAuditoria;
+import ups.edu.ec.entities.GuiaDeRemision.Lugares;
 
 /**
  *
@@ -29,7 +31,7 @@ import ups.edu.ec.entities.Abstract.TraAuditoria;
 @Table(name = "TRA_LIQUIDACION_CABECERA")
 @SequenceGenerator(name = "TRA_LCA_SEQ",sequenceName = "TRA_LCA_SEQ",initialValue = 1,allocationSize = 1)
 
-public class TraLiquidacionCabecera extends TraAuditoria implements Serializable {
+public class LiquidacionCabecera extends TraAuditoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "TRA_LCA_SEQ")
@@ -57,11 +59,18 @@ public class TraLiquidacionCabecera extends TraAuditoria implements Serializable
     private String lcaEstado;
     
     //Relacion liqCabecera_liqDetalle
-    @OneToMany(mappedBy = "LCA_ID_PK", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "LCA_LDE_FK", fetch = FetchType.LAZY)
+    public List<LiquidacionDetalle> liqDetalleList;
     
     //Relacion liqCabecera_Persona
-    @JoinColumn(name = "PER_ID_PK", referencedColumnName = "PER_ID_PK")
+    @JoinColumn(name = "PER_ID_PK",referencedColumnName = "PER_ID_PK")
     @ManyToOne(fetch = FetchType.LAZY)
+    private Persona PER_LCA_FK;
+    
+    //Relacion liqCabecera_lugares
+    @JoinColumn(name = "LUG_ID_PK",referencedColumnName = "LUG_ID_PK")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Lugares LUG_LCA_FK;
     
     
     @Override
@@ -131,13 +140,37 @@ public class TraLiquidacionCabecera extends TraAuditoria implements Serializable
         return lcaEstado;
     }
 
+    public List<LiquidacionDetalle> getLiqDetalleList() {
+        return liqDetalleList;
+    }
+
+    public Persona getPER_LCA_FK() {
+        return PER_LCA_FK;
+    }
+
+    public Lugares getLUG_LCA_FK() {
+        return LUG_LCA_FK;
+    }
+
+    public void setLiqDetalleList(List<LiquidacionDetalle> liqDetalleList) {
+        this.liqDetalleList = liqDetalleList;
+    }
+
+    public void setPER_LCA_FK(Persona PER_LCA_FK) {
+        this.PER_LCA_FK = PER_LCA_FK;
+    }
+
+    public void setLUG_LCA_FK(Lugares LUG_LCA_FK) {
+        this.LUG_LCA_FK = LUG_LCA_FK;
+    }
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TraLiquidacionCabecera)) {
+        if (!(object instanceof LiquidacionCabecera)) {
             return false;
         }
-        TraLiquidacionCabecera other = (TraLiquidacionCabecera) object;
+        LiquidacionCabecera other = (LiquidacionCabecera) object;
         if ((this.lcaId == null && other.lcaId != null) || (this.lcaId != null && !this.lcaId.equals(other.lcaId))) {
             return false;
         }

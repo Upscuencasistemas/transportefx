@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ups.edu.ec.entities.FACTURACION;
+package ups.edu.ec.entities.Facturacion;
 
 import ups.edu.ec.entities.Abstract.TraAuditoria;
 import java.io.Serializable;
@@ -27,7 +27,7 @@ import javax.persistence.Table;
 @Table(name = "TRA_FACTURA_DETALLE")
 @SequenceGenerator(name = "TRA_FACTURA_DETALLE_SEQ", sequenceName = "TRA_FACTURA_DETALLE_SEQ", initialValue = 1, allocationSize = 1)
 
-public class TraFacturaDetalle  extends TraAuditoria implements Serializable {
+public class Detalle  extends TraAuditoria implements Serializable {
     // Atributos mapeados con su respectivo nombre
     // para la creacion de campos de la BD
     private static final long serialVersionUID = 1L;
@@ -52,13 +52,13 @@ public class TraFacturaDetalle  extends TraAuditoria implements Serializable {
     // Foreign_Key FacturaCabecera_FacturaDetalle
     @ManyToOne
     @JoinColumn(name = "FCA_ID_PK", referencedColumnName = "FCA_ID_PK")
-    private TraFacturaCabecera FCA_FDE_FK;
+    private Cabecera FCA_FDE_FK;
 
-    public TraFacturaCabecera getFCA_FDE_FK() {
+    public Cabecera getFCA_FDE_FK() {
         return FCA_FDE_FK;
     }
 
-    public void setFCA_FDE_FK(TraFacturaCabecera FCA_FDE_FK) {
+    public void setFCA_FDE_FK(Cabecera FCA_FDE_FK) {
         this.FCA_FDE_FK = FCA_FDE_FK;
     }
     
@@ -112,10 +112,10 @@ public class TraFacturaDetalle  extends TraAuditoria implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the traFacturaDetID fields are not set
-        if (!(object instanceof TraFacturaDetalle)) {
+        if (!(object instanceof Detalle)) {
             return false;
         }
-        TraFacturaDetalle other = (TraFacturaDetalle) object;
+        Detalle other = (Detalle) object;
         if ((this.traFacturaDetID == null && other.traFacturaDetID != null) || (this.traFacturaDetID != null && !this.traFacturaDetID.equals(other.traFacturaDetID))) {
             return false;
         }

@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TRA_COMPROBANTE_EGRESO_DETALLE")
 @SequenceGenerator(name = "TRA_COMPROBANTE_EGRESO_DETALLE_SEQ",sequenceName = "TRA_COMPROBANTE_EGRESO_DETALLE_SEQ", initialValue = 1,allocationSize = 1)
-public class TraComprobanteDetalle implements Serializable {
+public class ComprobanteDetalle implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRA_COMPROBANTE_EGRESO_DETALLE_SEQ")
@@ -48,7 +48,7 @@ public class TraComprobanteDetalle implements Serializable {
     //comprobanteCabecera
     @ManyToOne                      
     @JoinColumn(name="CEC_ID")  
-    private TraComprobanteCabecera comprobanteCabecera;
+    private ComprobanteCabecera comprobanteCabecera;
    
     public Long getId() {
         return id;
@@ -122,11 +122,11 @@ public class TraComprobanteDetalle implements Serializable {
         this.haber = haber;
     }
 
-    public TraComprobanteCabecera getComprobanteCabecera() {
+    public ComprobanteCabecera getComprobanteCabecera() {
         return comprobanteCabecera;
     }
 
-    public void setComprobanteCabecera(TraComprobanteCabecera comprobanteCabecera) {
+    public void setComprobanteCabecera(ComprobanteCabecera comprobanteCabecera) {
         this.comprobanteCabecera = comprobanteCabecera;
     }
     
@@ -143,10 +143,10 @@ public class TraComprobanteDetalle implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TraComprobanteDetalle)) {
+        if (!(object instanceof ComprobanteDetalle)) {
             return false;
         }
-        TraComprobanteDetalle other = (TraComprobanteDetalle) object;
+        ComprobanteDetalle other = (ComprobanteDetalle) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

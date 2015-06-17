@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package ups.edu.ec.entities.DIARIOGENERAL;
+package ups.edu.ec.entities.DirioGeneral;
 
 import ups.edu.ec.entities.Abstract.TraAuditoria;
 import java.io.Serializable;
