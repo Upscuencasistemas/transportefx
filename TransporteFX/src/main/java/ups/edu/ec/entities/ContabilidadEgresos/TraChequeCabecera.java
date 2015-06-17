@@ -6,13 +6,20 @@
 package ups.edu.ec.entities.ContabilidadEgresos;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import ups.edu.ec.entities.ContabilidadIngresos.TraIngresosCabecera;
 
 /**
  *
@@ -31,6 +38,13 @@ public class TraChequeCabecera implements Serializable {
     private double efectivo;
     @Column(name = "CCA_TOTAL_RECAUDADO")
     private double totalRecaudado;
+    //chequedetalle
+    @OneToMany(mappedBy= "chequeCabecera",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
+    private List<TraChequeDetalle> chequeDetalleList;
+    //ingresocabecera
+    @ManyToOne                      
+    @JoinColumn(name="ICA_ID")  
+    private TraIngresosCabecera ingresoCabecera;
   
     
     public Long getId() {
@@ -55,6 +69,22 @@ public class TraChequeCabecera implements Serializable {
 
     public void setTotalRecaudado(double totalRecaudado) {
         this.totalRecaudado = totalRecaudado;
+    }
+
+    public List<TraChequeDetalle> getChequeDetalleList() {
+        return chequeDetalleList;
+    }
+
+    public void setChequeDetalleList(List<TraChequeDetalle> chequeDetalleList) {
+        this.chequeDetalleList = chequeDetalleList;
+    }
+
+    public TraIngresosCabecera getIngresoCabecera() {
+        return ingresoCabecera;
+    }
+
+    public void setIngresoCabecera(TraIngresosCabecera ingresoCabecera) {
+        this.ingresoCabecera = ingresoCabecera;
     }
     
     

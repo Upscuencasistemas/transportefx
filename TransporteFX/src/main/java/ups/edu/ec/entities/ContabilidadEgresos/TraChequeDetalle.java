@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,7 +21,7 @@ import javax.persistence.Table;
  * @author usuario
  */
 @Entity
-@Table(name = "TRA_CHEQUE_DETALE")
+@Table(name = "TRA_CHEQUE_DETALLE")
 @SequenceGenerator(name = "TRA_CHEQUE_DETALLE_SEQ",sequenceName = "TRA_CHEQUE_DETALLE_SEQ", initialValue = 1,allocationSize = 1)
 public class TraChequeDetalle implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -33,7 +35,14 @@ public class TraChequeDetalle implements Serializable {
     private String vencimiento;
     @Column(name = "CDE_VALOR")
     private double valor;
-    
+    //banco
+    @ManyToOne                      
+    @JoinColumn(name="BAN_ID")  
+    private TraBancos banco;
+    //chequecabecera
+    @ManyToOne                      
+    @JoinColumn(name="CCA_ID")  
+    private TraChequeCabecera chequeCabecera;
     
     public Long getId() {
         return id;
@@ -66,6 +75,23 @@ public class TraChequeDetalle implements Serializable {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    public TraBancos getBanco() {
+        return banco;
+    }
+
+    public void setBanco(TraBancos banco) {
+        this.banco = banco;
+    }
+
+    public TraChequeCabecera getChequeCabecera() {
+        return chequeCabecera;
+    }
+
+    public void setChequeCabecera(TraChequeCabecera chequeCabecera) {
+        this.chequeCabecera = chequeCabecera;
+    }
+    
 
     
     

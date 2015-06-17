@@ -15,11 +15,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import ups.edu.ec.entities.RRHH.TraPersona;
 
 /**
  *
@@ -27,7 +30,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "TRA_COMPROBANTE_EGRESO_CABECERA")
-@SequenceGenerator(name = "TRA_COMPROBANTE_EGRESO_CABECERA",sequenceName = "TRA_COMPROBANTE_EGRESO_CABECERA_SEQ", initialValue = 1,allocationSize = 1)
+@SequenceGenerator(name = "TRA_COMPROBANTE_EGRESO_CABECERA_SEQ",sequenceName = "TRA_COMPROBANTE_EGRESO_CABECERA_SEQ", initialValue = 1,allocationSize = 1)
 public class TraComprobanteCabecera implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,8 +57,18 @@ public class TraComprobanteCabecera implements Serializable {
     private Date fechas;
     @Column(name = "CEC_ESTADO", length = 100)
     private String estado;
-               
-
+    //Bancos
+    @ManyToOne                      
+    @JoinColumn(name="BAN_ID")  
+    private TraBancos traBanco;
+    //CompprobanteDetalle
+    @OneToMany(mappedBy= "comprobanteCabecera",cascade= {CascadeType.REMOVE,CascadeType.REFRESH}, fetch= FetchType.LAZY) 
+    private List<TraComprobanteDetalle> comprobanteDetalleList;
+    //persona 
+    @ManyToOne                      
+    @JoinColumn(name="PER_ID_PK")  
+    private TraPersona traPersonaBen;
+    
     public Long getId() {
         return id;
     }
@@ -136,7 +149,31 @@ public class TraComprobanteCabecera implements Serializable {
         this.estado = estado;
     }
 
-        
+    public TraBancos getTraBanco() {
+        return traBanco;
+    }
+
+    public void setTraBanco(TraBancos traBanco) {
+        this.traBanco = traBanco;
+    }
+
+    public List<TraComprobanteDetalle> getComprobanteDetalleList() {
+        return comprobanteDetalleList;
+    }
+
+    public void setComprobanteDetalleList(List<TraComprobanteDetalle> comprobanteDetalleList) {
+        this.comprobanteDetalleList = comprobanteDetalleList;
+    }
+
+    public TraPersona getTraPersonaBen() {
+        return traPersonaBen;
+    }
+
+    public void setTraPersonaBen(TraPersona traPersonaBen) {
+        this.traPersonaBen = traPersonaBen;
+    }
+
+            
     
     @Override
     public int hashCode() {
