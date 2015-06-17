@@ -14,9 +14,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import ups.edu.ec.entities.RRHH.TraPersona;
 
 /**
  *
@@ -41,7 +44,10 @@ public class TraUsuario implements Serializable {
     @OneToMany(mappedBy="usuario",cascade={CascadeType.REMOVE, CascadeType.REFRESH},fetch=FetchType.LAZY)
     public List<TraUsuarioRol> usuarioRolList;
     
-
+//RELACION DE UNO A UNO <Usuario a Persona >
+    @OneToOne
+    @JoinColumn(name="PER_ID_PK")
+    private TraPersona traPersona;
     public long getIdUsuario() {
         return idUsuario;
     }
@@ -74,7 +80,13 @@ public class TraUsuario implements Serializable {
         this.usuarioRolList = usuarioRolList;
     }
     
+    public TraPersona getTraPersona() {
+        return traPersona;
+    }
 
+    public void setTraPersona(TraPersona traPersona) {
+        this.traPersona = traPersona;
+    }
     @Override
     public int hashCode() {
         int hash = 0;
